@@ -11,7 +11,7 @@ def run_game():
     pygame.display.set_caption("Alien Shooter")
 
     # Create ship
-    ship = Ship(screen)
+    ship = Ship(as_settings, screen)
 
     # start game
     while True:
