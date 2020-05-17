@@ -69,18 +69,27 @@ def update_bullets(bullets):
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
 
-def create_fleet(as_settings, screen, aliens):
-    """Create full army of alien"""
-    alien = Alien(as_settings, screen)
-    alien_width = alien.rect.width
+def get_number_aliens_x(as_settings, alien_width):
+    """Determine the number of alien that can fit in row"""
     # Total available horizontal space on screen
     available_space_x = as_settings.screen_width - (2 * alien_width)
     # Total aliens that could be fitted horizontaly
     number_aliens_x = int(available_space_x / (2 * alien_width))
+    return number_aliens_x
+
+def create_alien(as_settings, screen, aliens, alien_number):
+    alien = Alien(as_settings, screen)
+    alien_width = alien.rect.width
+    alien.x = alien_width + 2 * alien_width * alien_number
+    alien.rect.x = alien.x
+    aliens.add(alien)
+
+def create_fleet(as_settings, screen, aliens):
+    """Create full army of alien"""
+    alien = Alien(as_settings, screen)
+    number_aliens_x = get_number_aliens_x(as_settings, alien.rect.width)
 
     # Create first row of alien
     for alien_number in range(number_aliens_x):
-        alien = Alien(as_settings, screen)
-        alien.x = alien_width + 2 * alien_width * alien_number
-        alien.rect.x = alien.x
-        aliens.add(alien)
+        create_alien(as_settings, screen, aliens, alien_number)
+        
