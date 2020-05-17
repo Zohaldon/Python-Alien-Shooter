@@ -4,11 +4,11 @@ import os
 
 class Alien(Sprite):
     """Class to represent a single alien."""
-    def __init__(self, ai_settings, screen):
+    def __init__(self, as_settings, screen):
         """Initialize the alien and set starting position.""" 
         super(Alien, self).__init__()
         self.screen = screen
-        self.ai_settings = ai_settings
+        self.as_settings = as_settings
 
         # get image path
         current_path = os.path.dirname(__file__)
