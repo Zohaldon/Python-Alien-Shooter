@@ -16,10 +16,6 @@ def run_game():
     # start game
     while True:
         gf.check_events()
-        # add color to the screen
-        screen.fill(as_settings.bg_color)
-        ship.blitme()   
-        # make screen visible
-        pygame.display.flip()
+        gf.update_screen(as_settings, screen, ship)
 
 run_game()

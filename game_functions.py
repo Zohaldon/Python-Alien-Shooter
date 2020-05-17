@@ -10,3 +10,10 @@ def check_events():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
+
+def update_screen(as_settings, screen, ship):
+    # add color to the screen
+    screen.fill(as_settings.bg_color)
+    ship.blitme()   
+    # make screen visible
+    pygame.display.flip()
