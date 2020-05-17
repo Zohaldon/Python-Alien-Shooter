@@ -15,18 +15,19 @@ def run_game():
 
     # Create ship
     ship = Ship(as_settings, screen)
-
-    # Make an alien.    
-    alien = Alien(as_settings, screen)
     
     # Group to store bullet
     bullets = Group()
+    aliens = Group()
 
-    # start game
+    # Create fleet of alien
+    gf.create_fleet(as_settings, screen, aliens)
+    
+    # Start game
     while True:
         gf.check_events(as_settings, screen, ship, bullets)
         ship.update()
         gf.update_bullets(bullets)
-        gf.update_screen(as_settings, screen, alien, ship, bullets)
+        gf.update_screen(as_settings, screen, ship, aliens, bullets)
 
 run_game()
