@@ -13,8 +13,11 @@ def check_events(ship):
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 # move ship right
-                ship.rect.centerx += 1
-
+                ship.moving_right = True
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_RIGHT:
+                # move ship right
+                ship.moving_right = False
 
 def update_screen(as_settings, screen, ship):
     # add color to the screen

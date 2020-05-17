@@ -16,6 +16,7 @@ def run_game():
     # start game
     while True:
         gf.check_events(ship)
+        ship.update()
         gf.update_screen(as_settings, screen, ship)
 
 run_game()
