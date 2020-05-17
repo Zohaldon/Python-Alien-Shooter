@@ -20,6 +20,7 @@ class Ship():
 
         # Movement flag
         self.moving_right = False
+        self.moving_left = False
     
     def blitme(self):
         """Render ship at it's current location"""
@@ -29,3 +30,5 @@ class Ship():
         """Update the ship's position based upon movement flag"""
         if self.moving_right:
             self.rect.centerx += 1
+        if self.moving_left:
+            self.rect.centerx -= 1
