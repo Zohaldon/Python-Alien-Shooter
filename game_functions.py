@@ -61,13 +61,15 @@ def update_screen(as_settings, screen, ship, aliens, bullets):
     # make screen visible
     pygame.display.flip()
 
-def update_bullets(bullets):
+def update_bullets(aliens, bullets):
     """ Update bullet and get rid of fired bullets not visible anymore"""
     bullets.update()
     # Delete bullets which are fired and invisible above screen
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
+    # Check if bukket has hit alien, delete alien if bullet hit
+    collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
 
 def get_number_aliens_x(as_settings, alien_width):
     """Determine the number of alien that can fit in row"""
@@ -82,7 +84,6 @@ def get_number_rows(as_settings, ship_height, alien_height):
     available_space_y = (as_settings.screen_height - ( 3 * alien_height) - ship_height )
     number_rows = int(available_space_y / (2 * alien_height))
     return number_rows
-
 
 def create_alien(as_settings, screen, aliens, alien_number, row_number):
     alien = Alien(as_settings, screen)
