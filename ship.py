@@ -1,11 +1,17 @@
 import pygame
+import os
 class Ship():
     """Initialize ship and set it's initial position"""
     def __init__(self, screen):
         self.screen = screen
 
+        # get image path
+        current_path = os.path.dirname(__file__)
+        resource_path = os.path.join(current_path, 'images')
+        image_path = os.path.join(resource_path, 'ship_steady.png')
+        
         # Load ship image and set rect
-        self.image = pygame.image.load("images/ship_steady.png")
+        self.image = pygame.image.load(image_path)
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 
