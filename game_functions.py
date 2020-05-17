@@ -14,6 +14,12 @@ def check_keydown_events(event, as_settings, screen, ship, bullets):
         ship.image = ship.moving_ship_image
     if event.key == pygame.K_SPACE:
         # Create bullet and add it to group
+        fire_bullet(as_settings, screen, ship, bullets)
+
+
+def fire_bullet(as_settings, screen, ship, bullets):
+    """ Fire bullets"""
+    if len(bullets) < as_settings.allowed_bullets:
         new_bullet = Bullet(as_settings, screen, ship)
         bullets.add(new_bullet)
 
@@ -51,3 +57,11 @@ def update_screen(as_settings, screen, ship, bullets):
         bullet.draw_bullet()
     # make screen visible
     pygame.display.flip()
+
+def update_bullets(bullets):
+    """ Update bullet and get rid of fired bullets not visible anymore"""
+    bullets.update()
+    # Delete bullets which are fired and invisible above screen
+    for bullet in bullets.copy():
+        if bullet.rect.bottom <= 0:
+            bullets.remove(bullet)

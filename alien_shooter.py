@@ -22,12 +22,7 @@ def run_game():
     while True:
         gf.check_events(as_settings, screen, ship, bullets)
         ship.update()
-        bullets.update()
-
-        # Delete bullets which are fired and invisible above screen
-        for bullet in bullets.copy():
-            if bullet.rect.bottom <= 0:
-                bullets.remove(bullet)
+        gf.update_bullets(bullets)
         gf.update_screen(as_settings, screen, ship, bullets)
 
 run_game()
