@@ -10,8 +10,11 @@ class Ship():
         current_path = os.path.dirname(__file__)
         images_path = os.path.join(current_path, 'images')
         ship_image_path = os.path.join(images_path, 'ship_steady.png')
+        moving_ship_image_path = os.path.join(images_path, 'ship_moving.png')
         # Load ship image and set rect
         self.image = pygame.image.load(ship_image_path)
+        self.ship_steady_image = pygame.image.load(ship_image_path)
+        self.moving_ship_image = pygame.image.load(moving_ship_image_path)
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 

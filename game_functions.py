@@ -6,18 +6,22 @@ def check_keydown_events(event, ship):
     # Move right
     if event.key == pygame.K_RIGHT:
         ship.moving_right = True
+        ship.image = ship.moving_ship_image
     # Move left
     if event.key == pygame.K_LEFT:
         ship.moving_left = True
+        ship.image = ship.moving_ship_image
 
 def check_keyup_events(event, ship):
     """Respond to key release"""
     # Stop moving right
     if event.key == pygame.K_RIGHT:
         ship.moving_right = False
+        ship.image = ship.ship_steady_image
     # Stop moving left
     if event.key == pygame.K_LEFT:
         ship.moving_left = False
+        ship.image = ship.ship_steady_image
 
 def check_events(ship):
     """ 
