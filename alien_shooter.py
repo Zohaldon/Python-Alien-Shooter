@@ -2,7 +2,7 @@ import sys
 import pygame
 from settings import Settings
 from ship import Ship
-
+import game_functions as gf
 def run_game():
     # Initialize pygame, settings and screen for Alien shooter
     pygame.init()
@@ -15,10 +15,7 @@ def run_game():
 
     # start game
     while True:
-        # catch keyboard and mouse event
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
+        gf.check_events()
         # add color to the screen
         screen.fill(as_settings.bg_color)
         ship.blitme()   
