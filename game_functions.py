@@ -126,7 +126,11 @@ def change_fleet_direction(as_settings, aliens):
         alien.rect.y += as_settings.fleet_drop_speed
     as_settings.fleet_direction *= -1
 
-def update_aliens(as_settings, aliens):
+def update_aliens(as_settings, ship, aliens):
     """Update the positions of all aliens in the fleet"""
     check_fleet_edges(as_settings, aliens)
     aliens.update()
+
+    # Alien/Ship collision 
+    if pygame.sprite.spritecollideany(ship, aliens):
+        pass
