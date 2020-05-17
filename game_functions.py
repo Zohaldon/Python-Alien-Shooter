@@ -141,7 +141,15 @@ def ship_hit(as_settings, stats, screen, ship, aliens, bullets):
 
     sleep(0.5)
 
-def update_aliens(as_settings, stats, screen, ship, aliens):
+def check_aliens_bottom(as_settings, stats, screen, ship, aliens, bullets):
+    """Check if fleet has reached bottom"""
+    screen_rect = screen. get_rect()
+    for alien in aliens.sprites():
+        if alien.rect.bottom >= screen_rect.bottom:
+            ship_hit(as_settings, stats, screen, ship, aliens, bullets)
+            break
+
+def update_aliens(as_settings, stats, screen, ship, aliens, bullets):
     """Update the positions of all aliens in the fleet"""
     check_fleet_edges(as_settings, aliens)
     aliens.update()
@@ -149,3 +157,4 @@ def update_aliens(as_settings, stats, screen, ship, aliens):
     # Alien/Ship collision 
     if pygame.sprite.spritecollideany(ship, aliens):
         pass
+    check_aliens_bottom(as_settings, stats, screen, ship, aliens, bullets)
