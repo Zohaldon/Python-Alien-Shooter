@@ -1,14 +1,12 @@
 import sys
 import pygame
-
+from settings import Settings
 def run_game():
-    # set display 
+    # Initialize pygame, settings and screen for Alien shooter
     pygame.init()
-    screen = pygame.display.set_mode((1050,700))
+    as_settings = Settings()
+    screen = pygame.display.set_mode((as_settings.screen_width, as_settings.screen_height))
     pygame.display.set_caption("Alien Shooter")
-
-    # background color
-    bg_color = (41, 40, 40)
 
     # start game
     while True:
@@ -17,7 +15,7 @@ def run_game():
             if event.type == pygame.QUIT:
                 sys.exit()
         # add color to the screen
-        screen.fill(bg_color)    
+        screen.fill(as_settings.bg_color)    
         # make screen visible
         pygame.display.flip()
 
