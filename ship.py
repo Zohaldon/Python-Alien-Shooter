@@ -42,3 +42,7 @@ class Ship():
             self.center -= self.as_settings.ship_speed_meter
         # Update rect based upon center value of ship
         self.rect.centerx = self.center
+    
+    def center_ship(self):
+        """Create ship at the center"""
+        self.center = self.screen_rect.centerx

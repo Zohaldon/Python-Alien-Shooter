@@ -11,7 +11,8 @@ class Settings():
 
         # Ship settings
         self.ship_speed_meter = 1.5
-
+        self.allowed_ship = 3
+        
         # Bullet settings
         self.bullet_speed_meter = 1
         self.bullet_width = 3
