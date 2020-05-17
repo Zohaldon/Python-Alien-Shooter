@@ -15,7 +15,8 @@ def check_keydown_events(event, as_settings, screen, ship, bullets):
     if event.key == pygame.K_SPACE:
         # Create bullet and add it to group
         fire_bullet(as_settings, screen, ship, bullets)
-
+    if event.key == pygame.K_q:
+        sys.exit()
 
 def fire_bullet(as_settings, screen, ship, bullets):
     """ Fire bullets"""
