@@ -128,18 +128,22 @@ def change_fleet_direction(as_settings, aliens):
     as_settings.fleet_direction *= -1
 
 def ship_hit(as_settings, stats, screen, ship, aliens, bullets):
-    # Decrease ship life
-    stats.ships_left -= 1
+    if stats.ships_left > 0:
+        # Decrease ship life
+        stats.ships_left -= 1
 
-    # Empty the list
-    bullets.empty()
-    aliens.empty()
+        # Empty the list
+        bullets.empty()
+        aliens.empty()
 
-    # Create a new fleet and center the ship
-    create_fleet(as_settings, screen, ship, aliens)
-    ship.center_ship()
+        # Create a new fleet and center the ship
+        create_fleet(as_settings, screen, ship, aliens)
+        ship.center_ship()
 
-    sleep(0.5)
+        # Pause while resetting the screen
+        sleep(0.5)
+    else:
+        stats.game_active = False
 
 def check_aliens_bottom(as_settings, stats, screen, ship, aliens, bullets):
     """Check if fleet has reached bottom"""
